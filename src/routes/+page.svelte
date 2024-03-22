@@ -3,9 +3,13 @@
 	import type { PageData } from './$types';
 
 	export let data: PageData;
-	console.log(data.scrap);
+
 	onMount(() => {
 		localStorage.setItem('coin', JSON.stringify(data.scrap));
+		let getcoin: any = localStorage.getItem('coin');
+		let brlusd = JSON.parse(getcoin)['USD/BRL'];
+
+		console.log(brlusd);
 	});
 </script>
 
