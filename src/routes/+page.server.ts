@@ -5,6 +5,10 @@ import type { PageServerLoad } from './$types';
 export const load: PageServerLoad = async () => {
 	async function scrapeGoogleFinance() {
 		try {
+			let keysArray: string[] = [];
+			let key: any;
+			let moeda1: string[] = [];
+			let moeda2: string[] = [];
 			const response = await axios.get('https://www.google.com/finance/markets/currencies');
 			const $ = cheerio.load(response.data);
 
@@ -34,7 +38,23 @@ export const load: PageServerLoad = async () => {
 			for (const pair in formattedPairs) {
 				console.log(`${pair}: ${formattedPairs[pair]}`);
 			}
-			return formattedPairs;
+
+			if (formattedPairs != undefined) {
+				for (key in formattedPairs) {
+					if (formattedPairs.hasOwnProperty(key)) {
+						keysArray.push(key); // Output the key
+					}
+				}
+			}
+		
+			keysArray.forEach((pair) => {
+				const [moedaA, moedaB] = pair.split('/');
+				moeda1.push(moedaA);
+				moeda2.push(moedaB);
+			});
+			
+			
+			return { formattedPairs, moeda1, moeda2 };
 		} catch (error) {
 			console.error('Error fetching data:', error);
 		}
