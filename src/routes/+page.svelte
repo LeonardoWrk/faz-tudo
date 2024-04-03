@@ -8,8 +8,8 @@
 	let final: any;
 	let numeroFormatado: any;
 	let scrap: any = data.scrap;
-	let moeda1: any = data.scrap?.moeda1
-	let moeda2: any = data.scrap?.moeda2
+	let moeda1: any = data.scrap?.MoedaUnRep;
+	let moeda2: any = data.scrap?.MoedaUnRep2;
 	let teste: any = '';
 	let teste3: any = '';
 	let teste2: any = '';

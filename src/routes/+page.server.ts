@@ -46,15 +46,21 @@ export const load: PageServerLoad = async () => {
 					}
 				}
 			}
-		
+
 			keysArray.forEach((pair) => {
 				const [moedaA, moedaB] = pair.split('/');
 				moeda1.push(moedaA);
 				moeda2.push(moedaB);
 			});
-			
-			
-			return { formattedPairs, moeda1, moeda2 };
+
+			let MoedaUnRep = moeda1.filter((moeda, index) => {
+				return moeda1.indexOf(moeda) === index;
+			});
+			let MoedaUnRep2 = moeda2.filter((moeda, index) => {
+				return moeda2.indexOf(moeda) === index;
+			});
+
+			return { formattedPairs, MoedaUnRep, MoedaUnRep2 };
 		} catch (error) {
 			console.error('Error fetching data:', error);
 		}
