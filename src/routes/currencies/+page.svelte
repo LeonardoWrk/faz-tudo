@@ -11,9 +11,9 @@
 	let moeda1: any = data.scrap?.MoedaUnRep;
 	let moeda2: any = data.scrap?.MoedaUnRep2;
 	let teste: any = '';
-	let teste3: any = '';
-	let teste2: any = '';
-	let getcoin: any;
+	let leftCurrency: any = '';
+	let rightCurrency: any = '';
+	let currencyData: any;
 
 	console.log(moeda1);
 
@@ -26,11 +26,10 @@
 		console.log('teste ', scrap[teste]);
 	});
 
-	async function faztudofuncionareeunaolembroopq(teste: any, teste2: any, teste3: any) {
-		teste = teste3 + '/' + teste2;
+	function faztudofuncionareeunaolembroopq(leftCurrency: any, rightCurrency: any) {
 		console.log('porraaaaaaaaaaa', teste);
-		let brlusd = JSON.parse(getcoin)[teste];
-		numeroFormatado = brlusd;
+		formattedNumber = JSON.parse(getcoin)[leftCurrency + '/' + rightCurrency].toFixed(2);
+		numeroFormatado = brlusd.tofixed(2);
 		console.log('boring', teste);
 		console.log('valor', teste);
 		console.log('teste ', scrap[teste]);
@@ -44,12 +43,12 @@
 	// Chama a função de atualização ao mudar o valor selecionado
 
 	$: {
-		faztudofuncionareeunaolembroopq(teste, teste2, teste3);
+		faztudofuncionareeunaolembroopq(leftCurrency, rightCurrency);
 	}
 </script>
 
-<p>A variável teste contém: {teste3}</p>
-<p>A variável teste2 contém: {teste2}</p>
+<p>A variável leftcurrency contém: {leftCurrency}</p>
+<p>A variável rightcurrency contém: {rightCurrency}</p>
 <h1>${numeroFormatado}</h1>
 <h1>%{final}</h1>
 <form id="meuForm" on:submit={conversao}>
@@ -59,7 +58,7 @@
 
 <select
 	class="h-8 w-[85%] rounded-lg border border-[#27293a] uppercase text-black"
-	bind:value={teste3}
+	bind:value={leftCurrency}
 >
 	<option value="" />
 	{#each moeda1 as currencies}
@@ -69,7 +68,7 @@
 
 <select
 	class="h-8 w-[85%] rounded-lg border border-[#27293a] uppercase text-black"
-	bind:value={teste2}
+	bind:value={rightCurrency}
 >
 	<option value="" />
 	{#each moeda2 as currencies}
