@@ -15,7 +15,6 @@
 	let teste2: any = '';
 	let getcoin: any;
 
-	let onMountWait = new Promise((resolve) => {
 		onMount(async () => {
 			localStorage.setItem('coin', JSON.stringify(data.scrap?.formattedPairs));
 			getcoin = localStorage.getItem('coin');
@@ -23,30 +22,30 @@
 			console.log('boring', teste);
 			console.log('valor', teste);
 			console.log('teste ', scrap[teste]);
-
-			resolve(getcoin); // Resolvendo a Promise após a execução do onMount()
 		});
-	});
-
+	
 	async function faztudofuncionareeunaolembroopq(teste: any, teste2: any, teste3: any) {
-		await onMountWait;
 
-		teste = teste3 + '/' + teste2;
-		console.log('porraaaaaaaaaaa', teste);
-		let brlusd = JSON.parse(getcoin)[teste];
-		numeroFormatado = brlusd;
-		console.log('boring', teste);
-		console.log('valor', teste);
-		console.log('teste ', scrap[teste]);
-		console.log('caralho', brlusd);
-	}
+    teste = teste3 + '/' + teste2;
+    try {
+        let brlusd = JSON.parse(getcoin)[teste];
+    
+        
+        if (brlusd !== undefined) {
+            numeroFormatado = brlusd.toFixed(2);
+        } else {
+            console.error('brlusd is undefined or not a number');
+        }
+    } catch (error) {
+        console.error('Error parsing JSON or calling toFixed:', error);
+    }
+}
 
 	function conversao() {
 		final = numeroFormatado * valor;
 	}
 
 	// Chama a função de atualização ao mudar o valor selecionado
-
 	$: {
 		faztudofuncionareeunaolembroopq(teste, teste2, teste3);
 	}
