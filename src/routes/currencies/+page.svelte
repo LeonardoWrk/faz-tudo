@@ -13,9 +13,7 @@
 	let teste: any = '';
 	let leftCurrency: any = '';
 	let rightCurrency: any = '';
-	let currencyData: any;
-
-	console.log(moeda1);
+	let getcoin: any;
 
 	onMount(async () => {
 		localStorage.setItem('coin', JSON.stringify(data.scrap?.formattedPairs));
@@ -26,9 +24,14 @@
 		console.log('teste ', scrap[teste]);
 	});
 
-	function faztudofuncionareeunaolembroopq(leftCurrency: any, rightCurrency: any) {
-		console.log('porraaaaaaaaaaa', teste);
-		formattedNumber = JSON.parse(getcoin)[leftCurrency + '/' + rightCurrency].toFixed(2);
+	async function faztudofuncionareeunaolembroopq(
+		leftCurrency: any,
+		rightCurrency: any,
+		teste: any
+	) {
+		teste = leftCurrency + '/' + rightCurrency;
+
+		let brlusd = JSON.parse(getcoin)[teste];
 		numeroFormatado = brlusd.tofixed(2);
 		console.log('boring', teste);
 		console.log('valor', teste);
@@ -43,7 +46,7 @@
 	// Chama a função de atualização ao mudar o valor selecionado
 
 	$: {
-		faztudofuncionareeunaolembroopq(leftCurrency, rightCurrency);
+		faztudofuncionareeunaolembroopq(leftCurrency, rightCurrency, teste);
 	}
 </script>
 
