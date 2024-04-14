@@ -7,8 +7,8 @@ export const load: PageServerLoad = async () => {
 		try {
 			let keysArray: string[] = [];
 			let key: any;
-			let moeda1: string[] = [];
-			let moeda2: string[] = [];
+			let leftSelectArray: string[] = [];
+			let rightSelectArray: string[] = [];
 			const response = await axios.get('https://www.google.com/finance/markets/currencies');
 			const $ = cheerio.load(response.data);
 
@@ -49,15 +49,15 @@ export const load: PageServerLoad = async () => {
 
 			keysArray.forEach((pair) => {
 				const [moedaA, moedaB] = pair.split('/');
-				moeda1.push(moedaA);
-				moeda2.push(moedaB);
+				leftSelectArray.push(moedaA);
+				rightSelectArray.push(moedaB);
 			});
 
-			let MoedaUnRep = moeda1.filter((moeda, index) => {
-				return moeda1.indexOf(moeda) === index;
+			let MoedaUnRep = leftSelectArray.filter((moeda, index) => {
+				return leftSelectArray.indexOf(moeda) === index;
 			});
-			let MoedaUnRep2 = moeda2.filter((moeda, index) => {
-				return moeda2.indexOf(moeda) === index;
+			let MoedaUnRep2 = rightSelectArray.filter((moeda, index) => {
+				return rightSelectArray.indexOf(moeda) === index;
 			});
 
 			return { formattedPairs, MoedaUnRep, MoedaUnRep2 };
