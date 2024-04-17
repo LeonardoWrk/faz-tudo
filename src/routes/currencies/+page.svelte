@@ -28,27 +28,39 @@
 	$: unitValue = formattedNumber * value;
 	
 </script>
-<h1>${formattedNumber}</h1>
-<h1>%{unitValue}</h1>
-<form id="meuForm" on:submit|preventDefault={event => faztudofuncionareeunaolembroopq(rightCurrency, leftCurrency)}>
-	<input type="text" id="meuInput" bind:value={value} />
-	<button type="submit">Obter Valor</button>
-</form>
-<select
-	class="h-8 w-[85%] rounded-lg border border-[#27293a] uppercase text-black"
-	bind:value={leftCurrency}
->
-	<option value="" />
-	{#each leftSelectArray as currencies}
-		<option>{currencies}</option>
-	{/each}
-</select>
-<select
-	class="h-8 w-[85%] rounded-lg border border-[#27293a] uppercase text-black"
-	bind:value={rightCurrency}
->
-	<option value="" />
-	{#each rightSelectArray as currencies}
-		<option>{currencies}</option>
-	{/each}
-</select>
+<div class=" bg-[#09080b] w-full h-screen flex justify-center items-center">
+	<div class=" bg-[#141415] border rounded-lg h-[35%] w-[35%] flex justify-center items-center flex-col ">
+		<!-- <form id="meuForm" on:submit|preventDefault={event => faztudofuncionareeunaolembroopq(rightCurrency, leftCurrency)}>
+			<input type="text" id="meuInput" bind:value={value} />
+			<button type="submit">Obter Valor</button>
+		</form> -->
+	
+		<div class="flex-col">
+			<div class=" w-[100%]  bg-[#6D6C71] mb-6 flex">
+				<input type="text" class="w-[35%] bg-[#6D6C71]">
+				<select
+			    class="m-2 w-[30%] rounded-lg border border-[#27293a] uppercase text-black ml-auto"
+			    bind:value={leftCurrency}
+		     >
+		   	<option value="" />
+			{#each leftSelectArray as currencies}
+				<option>{currencies}</option>
+			{/each}
+		</select>
+			</div>
+
+			<div class=" w-[100%]  bg-[#6D6C71] flex">
+				<input type="text" class="w-[35%] bg-[#6D6C71]">
+				<select
+			    class="m-2 w-[30%] rounded-lg border border-[#27293a] uppercase text-black ml-auto"
+			    bind:value={rightCurrency}
+		     >
+		   	<option value="" />
+			{#each rightSelectArray as currencies}
+				<option>{currencies}</option>
+			{/each}
+		</select>
+			</div>
+		</div>
+	</div>
+</div>
