@@ -35,7 +35,9 @@
 
 <Nav>alo</Nav>
 
-<div class=" flex h-screen w-full flex-col items-center justify-center bg-[#09080b] text-white">
+<div class="container mx-auto h-screen">
+
+<div class=" font-Poppins flex h-screen w-full flex-col items-center justify-center bg-[#09080b] text-white">
 	<h1 class="text-white">Currency Converter</h1>
 
 	<div class="m-4">
@@ -120,5 +122,6 @@
 			</div>
 		</div>
 	</div>
-	<button class=" mt-5 h-10 w-96 rounded-lg bg-[#533DA1]">Converter</button>
+	<button class=" mt-5 h-10 w-96 rounded-lg bg-[#533DA1]">Convert</button>
+</div>
 </div>
