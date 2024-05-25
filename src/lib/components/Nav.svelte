@@ -2,9 +2,7 @@
 </script>
 
 <div class="absolute h-14 w-full border-b border-[#3A3A3A]">
-	<div
-		class="container mx-auto h-14 w-full border-b border-[#3A3A3A] bg-[#09080b] font-Poppins text-white"
-	>
+	<div class="container mx-auto h-14 w-full border-b border-[#3A3A3A] font-Poppins text-white">
 		<div class="absolute ml-80 mt-5 flex h-[10%] w-[50%]">
 			<button
 				><svg

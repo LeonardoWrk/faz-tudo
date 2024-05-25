@@ -1,30 +1,34 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
-	export let x: any;
-	export let y: any;
+
+	export let x: string;
+	export let y: string;
+	export let z: string;
+
 	const dispatch = createEventDispatcher();
 
-	function toggle(x: any, y: any) {
-		y = y === 'bg-white' ? 'bg-[#09080b]' : 'bg-white';
-		console.log('y teste', y);
-		x = x === 'text-red-500' ? 'text-black' : 'text-red-500';
-		console.log('x teste', x);
-		window.document.body.classList.toggle('dark-mode');
-		setTimeout(() => {
-			dispatch('update', x);
-		}, 0);
+	function toggle(x: string, y: string, z: string) {
+		// Toggle the values
+		let newY = y === 'bg-white' ? 'bg-[#09080b]' : 'bg-white';
+		let newX = x === 'text-white' ? 'text-black' : 'text-white';
+		let newZ = z === 'border' ? 'border-black' : 'border';
 
-		setTimeout(() => {
-			dispatch('update', y);
-		}, 500);
-		console.log('o x', x);
-		console.log('o y', y);
+		// Update the body class
+		window.document.body.classList.toggle('dark-mode');
+
+		// Dispatch separate events for each value
+		dispatch('updateX', newX);
+		dispatch('updateY', newY);
+		dispatch('updateZ', newZ);
+
+		console.log('newX:', newX);
+		console.log('newY:', newY);
 	}
 
-	console.log('teste2', x);
-	console.log('teste2', y);
+	console.log('Initial x:', x);
+	console.log('Initial y:', y);
 </script>
 
-<button class="mr-72 h-3 w-6" on:click={() => toggle(y, x)}>
+<button class="mr-72 h-3 w-6" on:click={() => toggle(x, y, z)}>
 	<slot />
 </button>

@@ -19,21 +19,22 @@
 	let currencies: any;
 	let fristoption: boolean = false;
 	let secondoption: Boolean = false;
-	let x: string = 'text-black';
+	let x: string = 'text-white';
 	let y: string = 'bg-[#09080b]';
+	let z: string = 'border';
 
-	function updateX(event: CustomEvent<string>) {
-		// Atualize x com o valor do evento
-		console.log('essa porra rodou');
-		x = event.detail; // Atuliza o y com o valor do evento
-		console.log('aposattrecebi', x);
+	function handleUpdateX(event: CustomEvent<string>) {
+		x = event.detail;
+		console.log('Updated x:', x);
 	}
 
-	function updateY(event: CustomEvent<string>) {
-		// Atualize x com o valor do evento
-		console.log('essa porra tbm rodou');
-		y = event.detail; // Atuliza o y com o valor do evento
-		console.log('aposattrecebi', y);
+	function handleUpdateY(event: CustomEvent<string>) {
+		y = event.detail;
+		console.log('Updated y:', y);
+	}
+
+	function handleUpdateZ(event: CustomEvent<string>) {
+		z = event.detail;
 	}
 
 	console.log('q inferno	', x);
@@ -57,7 +58,7 @@
 	<Nav />
 
 	<div class=" e flex h-[80%] w-full flex-col items-center justify-center font-Poppins">
-		<h1 class="">Currency Converter x:{x} y:{y}</h1>
+		<h1 class="">Currency Converter x:{x} y:{y} z:{z}</h1>
 
 		<div class="m-4">
 			<form
@@ -77,7 +78,7 @@
 			</form>
 		</div>
 		<div class="flex justify-evenly">
-			<div class={`w-40 rounded-lg border ${y}`}>
+			<div class={`w-40 rounded-lg ${z} ${y}`}>
 				<div class="">
 					<p class=" absolute">{rightCurrency}</p>
 					<button
@@ -110,7 +111,7 @@
 
 			<div class="m-4"></div>
 
-			<div class="w-40 rounded-lg border bg-[#09080b]">
+			<div class={`w-40 rounded-lg ${z} ${y}`}>
 				<div class="">
 					<p class=" absolute">{leftCurrency}</p>
 					<button
@@ -144,7 +145,14 @@
 		<button class=" mt-5 h-10 w-96 rounded-lg bg-[#533DA1]">Convert</button>
 	</div>
 	<footer class=" flex justify-end">
-		<Button bind:x on:update={updateX} bind:y on:update={updateY}>
+		<Button
+			bind:z
+			bind:x
+			bind:y
+			on:updateX={handleUpdateX}
+			on:updateY={handleUpdateY}
+			on:updateZ={handleUpdateZ}
+		>
 			<svg class="bg-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
 				><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path
 					fill="#ffffff"
